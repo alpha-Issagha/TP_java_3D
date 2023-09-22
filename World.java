@@ -37,8 +37,38 @@ public class World{
 	public ArrayList<Aeroport> getList() {
         return list;
     }
-	/*public double distance()
-	{
 
-	}*/
+    public Aeroport findNearestAirport(double latitude,double longitude){
+    	int a = 0;
+    	double distance = distance(longitude,latitude,getList().get(0).getLongitude(),getList().get(0).getLatitude());
+    	for(int i=0;i<getList().size();i++){
+    		if (distance >= distance(longitude,latitude,getList().get(i).getLongitude(),getList().get(i).getLatitude()))
+    		{
+    			a = i;
+    			distance = distance(longitude,latitude,getList().get(i).getLongitude(),getList().get(i).getLatitude());
+    		} 
+    	}
+    	return getList().get(a);
+    }
+
+    public double distance(double longitude1,double latitude1,double longitude2,double latitude2){
+    	return Math.pow((latitude2 - latitude1),2)+Math.pow(((longitude2-longitude1)*Math.cos(Math.toRadians((latitude2 - latitude1)/2))),2);
+    }
+
+
+	public Aeroport findByCode(String iata)
+	{
+		boolean a = false;
+		int i =0;
+		while(!a)
+		{
+			if(getList().get(i).getIata().equals(iata))
+			{
+				a = true;
+			}
+			else 
+				i++;
+		}
+		return getList().get(i);
+	}
 }
