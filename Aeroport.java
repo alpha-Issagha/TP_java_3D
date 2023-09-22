@@ -54,9 +54,10 @@ public class Aeroport {
         this.longitude = longitude;
     }
 
+   @Override
     public String toString()
     {
-    	return "IATA : "+this.IATA+"  Name : "+this.name+"  Country : "+this.country+"  Latitude : "+this.latitude+" Longitude : "+this.longitude;
+    	return "IATA : "+this.IATA+"\nName : "+this.name+"\nCountry : "+this.country+"\nLatitude : "+this.latitude+"\nLongitude : "+this.longitude;
     }
 
 }
